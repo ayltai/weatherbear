@@ -1,0 +1,133 @@
+{
+    "name": "weatherbear",
+    "description": "A gorgeous weather app for your Mac, Linux, and Windows",
+    "version": "1.0.0",
+    "author": "Alan Tai",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ayltai/weatherbear.git"
+    },
+    "bugs": {
+        "url": "https://github.com/ayltai/weatherbear/issues"
+    },
+    "license": "MIT",
+    "keywords": [
+        "weather",
+        "forecast"
+    ],
+    "homepage": "./",
+    "main": "public/electron.js",
+    "scripts": {
+        "check": "npm run check:css && npm run check:js",
+        "check:css": "stylelint src/*.css public/**/*.css !build/** !src/css/*.min.css",
+        "check:js": "eslint src/**/*.jsx src/**/*.js public/**/*.js",
+        "codecov": "codecov",
+        "electron": "concurrently \"npm start\" \"wait-on http://localhost:3000 && electron .\"",
+        "preinstall": "npx npm-force-resolutions",
+        "postinstall": "electron-builder install-app-deps",
+        "start": "cross-env BROWSER=none react-scripts start",
+        "build": "react-scripts build",
+        "package:mac": "electron-builder build --mac --publish never",
+        "package:nix": "electron-builder build --linux --publish never",
+        "package:win": "electron-builder build --win --publish never",
+        "test": "react-scripts test --ci --no-watchman --coverage --coverageDirectory=coverage",
+        "eject": "react-scripts eject"
+    },
+    "devDependencies": {
+        "@testing-library/jest-dom": "^5.5.0",
+        "@testing-library/react": "^10.0.2",
+        "@testing-library/user-event": "^10.0.2",
+        "codecov": "^3.6.5",
+        "concurrently": "^5.1.0",
+        "cross-env": "^7.0.2",
+        "electron": "^8.2.3",
+        "electron-builder": "^22.5.1",
+        "electron-devtools-installer": "^3.0.0",
+        "enzyme": "^3.11.0",
+        "enzyme-adapter-react-16": "^1.15.2",
+        "eslint": "^6.8.0",
+        "eslint-plugin-react": "^7.19.0",
+        "nock": "^12.0.3",
+        "react-test-renderer": "^16.13.1",
+        "stylelint": "^13.3.2",
+        "stylelint-config-standard": "^20.0.0",
+        "wait-on": "^4.0.2"
+    },
+    "dependencies": {
+        "@material-ui/core": "^4.9.10",
+        "@material-ui/icons": "^4.9.1",
+        "@material-ui/lab": "^4.0.0-alpha.49",
+        "chart.js": "^2.9.3",
+        "dotenv": "^8.2.0",
+        "i18next": "^19.4.2",
+        "electron-is-dev": "^1.2.0",
+        "lodash.throttle": "^4.1.1",
+        "menubar": "^8.0.1",
+        "moment": "^2.24.0",
+        "prop-types": "^15.7.2",
+        "react": "^16.13.1",
+        "react-i18next": "^11.3.4",
+        "react-dom": "^16.13.1",
+        "react-router-dom": "^5.1.2",
+        "react-scripts": "^3.4.1",
+        "request": "^2.88.2",
+        "unsplash-js": "^6.0.0"
+    },
+    "resolutions": {
+        "minimist": "1.2.5"
+    },
+    "build": {
+        "appId": "com.github.ayltai.weatherbear",
+        "productName": "WeatherBear",
+        "extends": "react-cra",
+        "files": [
+            "build/**/*",
+            "node_modules/**/*"
+        ],
+        "linux": {
+            "category": "Utility"
+        },
+        "mac": {
+            "icon": "design/mac.icns",
+            "category": "public.app-category.weather",
+            "darkModeSupport": true
+        },
+        "win": {
+            "icon": "design/win.ico"
+        },
+        "nsis": {
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true,
+            "license": "LICENSE",
+            "deleteAppDataOnUninstall": true
+        },
+        "appImage": {
+            "license": "LICENSE"
+        },
+        "publish": {
+            "provider": "github",
+            "repo": "wetherbear",
+            "owner": "ayltai"
+        }
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "jest": {
+        "moduleNameMapper": {
+            "electron": "<rootDir>/src/components/mocks/electron.js"
+        }
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}
