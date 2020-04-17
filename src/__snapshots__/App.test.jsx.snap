@@ -373,6 +373,9 @@ Array [
   <div
     className="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-between"
   >
+    <div
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-7"
+    />
     <button
       aria-describedby={null}
       className="MuiButtonBase-root MuiIconButton-root makeStyles-container-127 MuiIconButton-sizeSmall"
@@ -413,12 +416,48 @@ Array [
         className="MuiTouchRipple-root"
       />
     </button>
-    <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8"
-    />
     <button
       aria-describedby={null}
       className="MuiButtonBase-root MuiIconButton-root makeStyles-container-160 MuiIconButton-sizeSmall"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      title="Photo by  / Unsplash"
+      type="button"
+    >
+      <span
+        className="MuiIconButton-label"
+      >
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+          />
+        </svg>
+      </span>
+      <span
+        className="MuiTouchRipple-root"
+      />
+    </button>
+    <button
+      aria-describedby={null}
+      className="MuiButtonBase-root MuiIconButton-root makeStyles-container-161 MuiIconButton-sizeSmall"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
