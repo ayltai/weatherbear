@@ -46,7 +46,15 @@ A gorgeous weather app for your Mac, Linux, and Windows.
 
 ![More settings](design/screenshot-settings-2.png)
 
-## Getting started
+## Downloads
+
+| OS      | Download URL                                                                                       |
+|---------|----------------------------------------------------------------------------------------------------|
+| macOS   | https://github.com/ayltai/weatherbear/releases/download/release%2F1.0.0/WeatherBear-1.0.0.dmg      |
+| Linux   | https://github.com/ayltai/weatherbear/releases/download/release%2F1.0.0/WeatherBear-1.0.0.AppImage |
+| Windows | https://github.com/ayltai/weatherbear/releases/download/release%2F1.0.0/WeatherBear-1.0.0.exe      |
+
+## Development
 
 ### Installation
 1. Install [NodeJS](https://nodejs.org)
