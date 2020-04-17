@@ -17,6 +17,8 @@ export class Preferences {
     weatherSource         = Configurations.WEATHER_SOURCES[0].value;
     weather;
     backgroundImageUrl;
+    backgroundImageAuthor;
+    backgroundImageAuthorProfileUrl;
 
     get favoriteLocation() {
         return this.locations.length ? this.favoriteLocationIndex > this.locations.length - 1 ? this.locations[0] : this.locations[this.favoriteLocationIndex] : Configurations.LOCATION;

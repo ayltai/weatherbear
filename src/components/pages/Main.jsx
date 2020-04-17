@@ -1,5 +1,5 @@
 import { Divider, Grid, makeStyles, Tooltip, useTheme, } from '@material-ui/core';
-import { Refresh, Settings, } from '@material-ui/icons';
+import { InfoOutlined, Refresh, Settings, } from '@material-ui/icons';
 import moment from 'moment';
 import path from 'path';
 import PropTypes from 'prop-types';
@@ -34,8 +34,10 @@ const refresh = () => {
 
 const Page = ({ history, }) => {
     const [ state, setState, ] = React.useState({
-        weather            : {},
-        backgroundImageUrl : '',
+        weather                         : {},
+        backgroundImageUrl              : '',
+        backgroundImageAuthor           : '',
+        backgroundImageAuthorProfileUrl : '',
     });
 
     const theme  = useTheme();
@@ -85,16 +87,20 @@ const Page = ({ history, }) => {
                 .then(weather => {
                     UnsplashApiClient.getRandomPhoto(`${Dates.getPartOfDay()} ${weather.current.icon}`, window.innerWidth * 2, window.innerWidth)
                         .then(response => {
-                            pref.lastRefreshTime    = Date.now();
-                            pref.weather            = weather;
-                            pref.backgroundImageUrl = response.urls.regular;
+                            pref.lastRefreshTime                 = Date.now();
+                            pref.weather                         = weather;
+                            pref.backgroundImageUrl              = response.urls.regular;
+                            pref.backgroundImageAuthor           = response.user.name;
+                            pref.backgroundImageAuthorProfileUrl = response.user.links.html;
                             pref.save();
 
                             createTrayIcon(`${Math.round(weather.current.temperature)}${pref.temperatureUnitSymbol}`, `${WeatherHelper.getIcon(weather.current.icon, pref.weatherSource)}.svg`);
 
                             setState({
-                                weather            : weather,
-                                backgroundImageUrl : response.urls.regular,
+                                weather                         : weather,
+                                backgroundImageUrl              : response.urls.regular,
+                                backgroundImageAuthor           : response.user.name,
+                                backgroundImageAuthorProfileUrl : response.user.links.html,
                             });
                         })
                         .catch(console.error);
@@ -104,8 +110,10 @@ const Page = ({ history, }) => {
             createTrayIcon(`${Math.round(pref.weather.current.temperature)}${pref.temperatureUnitSymbol}`, `${WeatherHelper.getIcon(pref.weather.current.icon, pref.weatherSource)}.svg`);
 
             setState({
-                weather            : pref.weather,
-                backgroundImageUrl : pref.backgroundImageUrl,
+                weather                         : pref.weather,
+                backgroundImageUrl              : pref.backgroundImageUrl,
+                backgroundImageAuthor           : pref.backgroundImageAuthor,
+                backgroundImageAuthorProfileUrl : pref.backgroundImageAuthorProfileUrl,
             });
         }
     }, []);
@@ -206,16 +214,21 @@ const Page = ({ history, }) => {
                 container
                 alignItems='center'
                 justify='space-between'>
+                <Grid
+                    item
+                    xs={7}>
+                    {state.weather.current && <Timestamp prefix={t('Last updated ')} />}
+                </Grid>
                 <Button
                     tooltip='Settings'
                     icon={<Settings />}
                     size='small'
                     onClick={() => history.push('/settings')} />
-                <Grid
-                    item
-                    xs={8}>
-                    {state.weather.current && <Timestamp prefix={t('Last updated ')} />}
-                </Grid>
+                <Button
+                    tooltip={`Photo by ${state.backgroundImageAuthor} / Unsplash`}
+                    icon={<InfoOutlined />}
+                    size='small'
+                    onClick={() => window.require('electron').remote.shell.openExternal(state.backgroundImageAuthorProfileUrl)} />
                 <Button
                     tooltip='Refresh'
                     icon={<Refresh />}
