@@ -17,7 +17,7 @@ Configurations.FORECAST_DAYS  = 4;
 Configurations.LOCATION           = new Location(22.3080, 113.9185, 'Hong Kong International Airport, Sky Plaza Road, Chek Lap Kok');
 Configurations.UI_UPDATE_INTERVAL = 1000 * 20;
 Configurations.REFRESH_INTERVAL   = 1000 * 60 * 30;
-Configurations.IS_AUTO_LAUNCH     = true;
+Configurations.IS_AUTO_LAUNCH     = process.env.NODE_ENV !== 'development';
 Configurations.IS_MILITARY_TIME   = false;
 
 Configurations.DOCUMENTATION_URL = 'https://github.com/ayltai/weatherbear/blob/master/README.md';

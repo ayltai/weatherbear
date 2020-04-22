@@ -1,4 +1,5 @@
 import { useInterval, } from '@ayltai/use-interval';
+import { getWeather, Weather, } from '@ayltai/react-weather';
 import { Divider, Grid, makeStyles, Tooltip, useTheme, } from '@material-ui/core';
 import { InfoOutlined, Refresh, Settings, } from '@material-ui/icons';
 import moment from 'moment';
@@ -8,7 +9,6 @@ import React from 'react';
 import { useTranslation, } from 'react-i18next';
 import { withRouter, } from 'react-router-dom';
 
-import { WeatherApiClient, } from '../../api/WeatherApiClient';
 import { UnsplashApiClient, } from '../../api/UnsplashApiClient';
 import { Preferences, } from '../../models/Preferences';
 import { Conversions, } from '../../utils/Conversions';
@@ -20,7 +20,6 @@ import { Button, } from '../views/Button';
 import { Timestamp, } from '../views/Timestamp';
 import { Configurations, } from '../../Configurations';
 import { ChartWrapper, } from '../ChartWrapper';
-import { CurrentWeather, } from '../CurrentWeather';
 import { DailyWeather, } from '../DailyWeather';
 
 const shouldRefresh = () => {
@@ -83,9 +82,9 @@ const Page = ({ history, }) => {
         const loc  = pref.favoriteLocation;
 
         if (shouldRefresh()) {
-            WeatherApiClient.getWeather(pref.weatherSource, loc.latitude, loc.longitude, pref.locale)
+            getWeather(pref.weatherSource, loc.latitude, loc.longitude, Configurations.FORECAST_HOURS, Configurations.FORECAST_DAYS, pref.locale)
                 .then(weather => {
-                    UnsplashApiClient.getRandomPhoto(`${Dates.getPartOfDay()} ${weather.current.icon}`, window.innerWidth * 2, window.innerWidth)
+                    UnsplashApiClient.getRandomPhoto(`${Dates.getPartOfDay()} ${weather.currently.icon}`, window.innerWidth * 2, window.innerWidth)
                         .then(response => {
                             pref.lastRefreshTime                 = Date.now();
                             pref.weather                         = weather;
@@ -94,7 +93,7 @@ const Page = ({ history, }) => {
                             pref.backgroundImageAuthorProfileUrl = response.user.links.html;
                             pref.save();
 
-                            createTrayIcon(`${Math.round(weather.current.temperature)}${pref.temperatureUnitSymbol}`, `${WeatherHelper.getIcon(weather.current.icon, pref.weatherSource)}.svg`);
+                            createTrayIcon(`${Math.round(weather.currently.temperature)}${pref.temperatureUnitSymbol}`, `${WeatherHelper.getIcon(weather.currently.icon, pref.weatherSource)}.svg`);
 
                             setState({
                                 weather                         : weather,
@@ -107,7 +106,7 @@ const Page = ({ history, }) => {
                 })
                 .catch(console.error);
         } else {
-            createTrayIcon(`${Math.round(pref.weather.current.temperature)}${pref.temperatureUnitSymbol}`, `${WeatherHelper.getIcon(pref.weather.current.icon, pref.weatherSource)}.svg`);
+            createTrayIcon(`${Math.round(pref.weather.currently.temperature)}${pref.temperatureUnitSymbol}`, `${WeatherHelper.getIcon(pref.weather.currently.icon, pref.weatherSource)}.svg`);
 
             setState({
                 weather                         : pref.weather,
@@ -178,18 +177,22 @@ const Page = ({ history, }) => {
     return (
         <>
             {state.backgroundImageUrl ? (
-                <CurrentWeather
-                    background={state.backgroundImageUrl}
+                <Weather.Currently
+                    width={window.innerWidth}
+                    height={window.innerWidth / 2}
+                    backgroundImageUrl={state.backgroundImageUrl}
                     location={preferences.favoriteLocation.displayName}
-                    icon={state.weather.current && state.weather.current.icon}
-                    summaryCurrent={state.weather.current && state.weather.current.summary}
-                    summaryToday={state.weather.daily && state.weather.daily[0].summary}
-                    temperature={state.weather.current && state.weather.current.temperature}
-                    temperatureHigh={state.weather.daily && state.weather.daily[0].temperatureHigh}
-                    temperatureLow={state.weather.daily && state.weather.daily[0].temperatureLow}
-                    humidity={state.weather.current && state.weather.current.humidity}
-                    windSpeed={state.weather.current && state.weather.current.windSpeed}
-                    uvIndex={state.weather.current && state.weather.current.uvIndex} />
+                    iconId={state.weather.currently?.icon}
+                    iconType={preferences.weatherSource}
+                    summaryCurrently={state.weather.currently?.summary}
+                    summaryToday={state.weather.daily[0]?.summary}
+                    temperature={state.weather.currently?.temperature}
+                    temperatureHigh={state.weather.daily[0]?.temperatureHigh}
+                    temperatureLow={state.weather.daily[0]?.temperatureLow}
+                    humidity={state.weather.currently?.humidity}
+                    windSpeed={state.weather.currently?.windSpeed}
+                    uvIndex={state.weather.currently?.uvIndex}
+                    unit={preferences.units} />
             ) : ViewHelper.createDummyCurrentWeather()}
             {chartData.labels.length ? (
                 <ChartWrapper
@@ -217,7 +220,7 @@ const Page = ({ history, }) => {
                 <Grid
                     item
                     xs={7}>
-                    {state.weather.current && <Timestamp prefix={t('Last updated ')} />}
+                    {state.weather.currently && <Timestamp prefix={t('Last updated ')} />}
                 </Grid>
                 <Button
                     tooltip='Settings'
