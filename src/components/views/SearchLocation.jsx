@@ -1,3 +1,4 @@
+import { useScript, } from '@ayltai/use-script';
 import { TextField, } from '@material-ui/core';
 import { Autocomplete, } from '@material-ui/lab';
 import throttle from 'lodash.throttle';
@@ -6,7 +7,6 @@ import React from 'react';
 import { useTranslation, } from 'react-i18next';
 
 import { GoogleMapApiClient, } from '../../api/GoogleMapApiClient';
-import { useScript, } from '../../hooks/useScript';
 import { Location, } from '../../models/Location';
 import { Notification, } from '../../components/views/Notification';
 

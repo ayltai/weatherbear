@@ -1,3 +1,4 @@
+import { useOnlineStatus, } from '@ayltai/use-online-status';
 import { createMuiTheme, CssBaseline, ThemeProvider, } from '@material-ui/core';
 import React from 'react';
 import { useTranslation, withTranslation, } from 'react-i18next';
@@ -8,7 +9,6 @@ import { Locations, } from './components/pages/Locations';
 import { Main, } from './components/pages/Main';
 import { Settings, } from './components/pages/Settings';
 import { Notification, } from './components/views/Notification';
-import { useOnlineStatus, } from './hooks/useOnlineStatus';
 import { Preferences, } from './models/Preferences';
 import { Configurations, } from './Configurations';
 import './css/weather-icons.min.css';

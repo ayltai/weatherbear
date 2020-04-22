@@ -1,3 +1,4 @@
+import { useInterval, } from '@ayltai/use-interval';
 import { Divider, Grid, makeStyles, Tooltip, useTheme, } from '@material-ui/core';
 import { InfoOutlined, Refresh, Settings, } from '@material-ui/icons';
 import moment from 'moment';
@@ -9,7 +10,6 @@ import { withRouter, } from 'react-router-dom';
 
 import { WeatherApiClient, } from '../../api/WeatherApiClient';
 import { UnsplashApiClient, } from '../../api/UnsplashApiClient';
-import { useInterval, } from '../../hooks/useInterval';
 import { Preferences, } from '../../models/Preferences';
 import { Conversions, } from '../../utils/Conversions';
 import { Dates, } from '../../utils/Dates';

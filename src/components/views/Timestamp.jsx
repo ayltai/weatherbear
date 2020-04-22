@@ -1,8 +1,8 @@
+import { useInterval, } from '@ayltai/use-interval';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { useInterval, } from '../../hooks/useInterval';
 import { Preferences, } from '../../models/Preferences';
 import { Configurations, } from '../../Configurations';
 import { ShadowedText, } from './ShadowedText';
