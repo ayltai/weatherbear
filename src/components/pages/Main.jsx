@@ -1,6 +1,6 @@
 import { useInterval, } from '@ayltai/use-interval';
 import { getWeather, Weather, } from '@ayltai/react-weather';
-import { Divider, Grid, makeStyles, Tooltip, useTheme, } from '@material-ui/core';
+import { Divider, Grid, makeStyles, useTheme, } from '@material-ui/core';
 import { InfoOutlined, Refresh, Settings, } from '@material-ui/icons';
 import moment from 'moment';
 import path from 'path';
@@ -11,16 +11,13 @@ import { withRouter, } from 'react-router-dom';
 
 import { UnsplashApiClient, } from '../../api/UnsplashApiClient';
 import { Preferences, } from '../../models/Preferences';
-import { Conversions, } from '../../utils/Conversions';
 import { Dates, } from '../../utils/Dates';
-import { Numbers, } from '../../utils/Numbers';
 import { ViewHelper, } from '../../utils/ViewHelper';
 import { WeatherHelper, } from '../../utils/WeatherHelper';
 import { Button, } from '../views/Button';
 import { Timestamp, } from '../views/Timestamp';
 import { Configurations, } from '../../Configurations';
 import { ChartWrapper, } from '../ChartWrapper';
-import { DailyWeather, } from '../DailyWeather';
 
 const shouldRefresh = () => {
     const preferences = Preferences.load();
@@ -82,7 +79,7 @@ const Page = ({ history, }) => {
         const loc  = pref.favoriteLocation;
 
         if (shouldRefresh()) {
-            getWeather(pref.weatherSource, loc.latitude, loc.longitude, Configurations.FORECAST_HOURS, Configurations.FORECAST_DAYS, pref.locale)
+            getWeather(pref.weatherSource, undefined, loc.latitude, loc.longitude, Configurations.FORECAST_HOURS, Configurations.FORECAST_DAYS, pref.locale)
                 .then(weather => {
                     UnsplashApiClient.getRandomPhoto(`${Dates.getPartOfDay()} ${weather.currently.icon}`, window.innerWidth * 2, window.innerWidth)
                         .then(response => {
@@ -122,45 +119,32 @@ const Page = ({ history, }) => {
     const preferences = Preferences.load();
 
     const dailyWeathers = [];
-    if (state.weather.daily) for (let i = 0; i < Configurations.FORECAST_DAYS; i++) {
-        const humidity = state.weather.daily[i].humidity || state.weather.daily[i].humidity === 0 ? (
-            <>
-                {`${t('Humidity')}: ${100 * state.weather.daily[i].humidity}%`}<br />
-            </>
-        ) : null;
-
-        dailyWeathers.push(
-            <React.Fragment key={i}>
-                {i > 0 && (
-                    <Divider
-                        orientation='vertical'
-                        flexItem />
-                )}
-                <Grid item>
-                    <Tooltip title={
-                        <>
-                            {moment().add(i, 'days').format('LL')}<br />
-                            {state.weather.daily[i].summary}<br />
-                            {`${t('Temperature')}: ${Numbers.format(Conversions.getTemperature(state.weather.daily[i].temperatureHigh))}${preferences.temperatureUnitSymbol} - ${Numbers.format(Conversions.getTemperature(state.weather.daily[i].temperatureLow))}${preferences.temperatureUnitSymbol}`}<br />
-                            {`${t('Precipitation')}: ${Math.round(100 * state.weather.daily[i].precipProbability)}% ${Numbers.format(state.weather.daily[i].precipIntensity)}mm`}<br />
-                            {humidity}
-                            {`${t('Wind')}: ${Numbers.format(Conversions.getSpeed(state.weather.daily[i].windSpeed))}${preferences.speedUnitSymbol}`}<br />
-                            {`${t('UV')}: ${state.weather.daily[i].uvIndex}`}
-                        </>
-                    }>
-                        <div>
-                            <DailyWeather
-                                date={moment().add(i + 1, 'days')}
-                                icon={state.weather.daily[i].icon}
-                                temperatureHigh={state.weather.daily[i].temperatureHigh}
-                                temperatureLow={state.weather.daily[i].temperatureLow}
-                                precipProbability={state.weather.daily[i].precipProbability} />
-                        </div>
-                    </Tooltip>
-                </Grid>
-            </React.Fragment>
-        );
-    }
+    if (state.weather.daily) for (let i = 0; i < Configurations.FORECAST_DAYS; i++) dailyWeathers.push(
+        <React.Fragment key={i}>
+            {i > 0 && (
+                <Divider
+                    orientation='vertical'
+                    flexItem />
+            )}
+            <Grid item>
+                <Weather.Daily
+                    orientation='vertical'
+                    date={moment().add(i, 'days')}
+                    summary={state.weather.daily[i].summary}
+                    iconId={state.weather.daily[i].icon}
+                    iconType={preferences.weatherSource}
+                    temperatureHigh={state.weather.daily[i].temperatureHigh}
+                    temperatureLow={state.weather.daily[i].temperatureLow}
+                    humidity={state.weather.daily[i].humidity}
+                    precipProbability={state.weather.daily[i].precipProbability}
+                    precipIntensity={state.weather.daily[i].precipIntensity}
+                    windSpeed={state.weather.daily[i].windSpeed}
+                    windSpeedSuffix={preferences.speedUnitSymbol}
+                    uvIndex={state.weather.daily[i].uvIndex}
+                    unit={preferences.units} />
+            </Grid>
+        </React.Fragment>
+    );
 
     let min = 0;
     let max = 0;
