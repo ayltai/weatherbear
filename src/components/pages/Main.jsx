@@ -1,6 +1,6 @@
 import { useInterval, } from '@ayltai/use-interval';
 import { getWeather, Weather, } from '@ayltai/react-weather';
-import { Divider, Grid, makeStyles, useTheme, } from '@material-ui/core';
+import { Divider, Grid, useTheme, } from '@material-ui/core';
 import { InfoOutlined, Refresh, Settings, } from '@material-ui/icons';
 import moment from 'moment';
 import path from 'path';
@@ -17,7 +17,6 @@ import { WeatherHelper, } from '../../utils/WeatherHelper';
 import { Button, } from '../views/Button';
 import { Timestamp, } from '../views/Timestamp';
 import { Configurations, } from '../../Configurations';
-import { ChartWrapper, } from '../ChartWrapper';
 
 const shouldRefresh = () => {
     const preferences = Preferences.load();
@@ -38,13 +37,6 @@ const Page = ({ history, }) => {
 
     const theme  = useTheme();
     const { t, } = useTranslation();
-
-    const classes = makeStyles({
-        chart : {
-            width      : window.innerWidth - theme.spacing(1),
-            marginLeft : theme.spacing(1),
-        },
-    })();
 
     const createTrayIcon = (temperature, icon) => {
         const scale = window.devicePixelRatio;
@@ -79,7 +71,7 @@ const Page = ({ history, }) => {
         const loc  = pref.favoriteLocation;
 
         if (shouldRefresh()) {
-            getWeather(pref.weatherSource, undefined, loc.latitude, loc.longitude, Configurations.FORECAST_HOURS, Configurations.FORECAST_DAYS, pref.locale)
+            getWeather(loc.latitude, loc.longitude, pref.weatherSource, undefined, Configurations.FORECAST_HOURS, Configurations.FORECAST_DAYS, pref.locale)
                 .then(weather => {
                     UnsplashApiClient.getRandomPhoto(`${Dates.getPartOfDay()} ${weather.currently.icon}`, window.innerWidth * 2, window.innerWidth)
                         .then(response => {
@@ -146,18 +138,6 @@ const Page = ({ history, }) => {
         </React.Fragment>
     );
 
-    let min = 0;
-    let max = 0;
-
-    const chartData = Configurations.createChartData(theme, preferences.isDarkMode, preferences.forecast, t);
-
-    if (state.weather.hourly) {
-        WeatherHelper.updateChartData(chartData, state.weather.hourly, preferences.isDarkMode);
-
-        min = Math.floor(Math.min.apply(Math, chartData.datasets[0].data));
-        max = Math.ceil(Math.max.apply(Math, chartData.datasets[0].data));
-    }
-
     return (
         <>
             {state.backgroundImageUrl ? (
@@ -178,16 +158,17 @@ const Page = ({ history, }) => {
                     uvIndex={state.weather.currently?.uvIndex}
                     unit={preferences.units} />
             ) : ViewHelper.createDummyCurrentWeather()}
-            {chartData.labels.length ? (
-                <ChartWrapper
-                    className={classes.chart}
-                    width={window.innerWidth}
+            {state.weather.hourly ? (
+                <Weather.Hourly
+                    width={window.innerWidth - theme.spacing(1)}
                     height={window.innerWidth / 2}
-                    data={chartData}
-                    options={{
-                        scales   : Configurations.createChartScales(theme, preferences, min, max),
-                        tooltips : Configurations.createChartTooltips(preferences, t),
-                    }} />
+                    hourly={state.weather.hourly}
+                    chartLabel={t('8-hour forecast')}
+                    iconType={preferences.weatherSource}
+                    windSpeedSuffix={t(preferences.speedUnitSymbol)}
+                    additionalForecast={preferences.forecast}
+                    unit={preferences.units}
+                    timeFormat={preferences.militaryTime ? 'HH' : 'ha'} />
             ) : ViewHelper.createDummyWeatherChart()}
             <Divider />
             <Grid

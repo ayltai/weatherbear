@@ -1,6 +1,4 @@
 import { Location, } from './models/Location';
-import { Conversions, } from './utils/Conversions';
-import { Numbers, } from './utils/Numbers';
 import { WeatherHelper, } from './utils/WeatherHelper';
 
 export const Configurations = {};
@@ -76,11 +74,11 @@ Configurations.FORECAST = [
     },
     {
         label : 'Temperature, precipitation, wind speed',
-        value : 'wind',
+        value : 'windSpeed',
     },
     {
         label : 'Temperature, precipitation, UV index',
-        value : 'uv',
+        value : 'uvIndex',
     },
 ];
 
@@ -112,175 +110,4 @@ Configurations.createPalette = isDarkMode => ({
         dark  : '#0097a7',
     },
     type      : isDarkMode ? 'dark' : 'light',
-});
-
-Configurations.createChartData = (theme, isDarkMode, forecast, t) => ({
-    labels   : [],
-    datasets : [
-        {
-            label           : t('8-hour forecast'),
-            yAxisID         : 'temp',
-            order           : 2,
-            data            : [],
-            pointStyle      : [],
-            pointHitRadius  : 10,
-            fill            : false,
-            backgroundColor : isDarkMode ? theme.palette.secondary.dark : theme.palette.secondary.light,
-            borderColor     : isDarkMode ? theme.palette.secondary.dark : theme.palette.secondary.light,
-        },
-        {
-            label           : '',
-            yAxisID         : 'precip',
-            order           : 3,
-            data            : [],
-            pointRadius     : 0,
-            pointHitRadius  : 10,
-            fill            : true,
-            backgroundColor : isDarkMode ? theme.palette.primary.dark : theme.palette.primary.light,
-            borderColor     : isDarkMode ? theme.palette.primary.dark : theme.palette.primary.light,
-        },
-        {
-            label : '',
-            order : 4,
-            data  : [],
-        },
-        {
-            label           : '',
-            //yAxisID         : forecast === 'humidity' ? 'humidity' : null,
-            yAxisID         : 'humidity',
-            order           : forecast === 'humidity' ? 5 : 0,
-            data            : [],
-            pointRadius     : 0,
-            pointHitRadius  : 10,
-            fill            : false,
-            backgroundColor : isDarkMode ? theme.palette.info.dark : theme.palette.info.light,
-            borderColor     : isDarkMode ? theme.palette.info.dark : theme.palette.info.light,
-        },
-        {
-            label           : '',
-            //yAxisID         : forecast === 'wind' ? 'wind' : null,
-            yAxisID         : 'wind',
-            order           : forecast === 'wind' ? 5 : 0,
-            data            : [],
-            pointRadius     : 0,
-            pointHitRadius  : 10,
-            fill            : false,
-            backgroundColor : isDarkMode ? theme.palette.info.dark : theme.palette.info.light,
-            borderColor     : isDarkMode ? theme.palette.info.dark : theme.palette.info.light,
-        },
-        {
-            label           : '',
-            //yAxisID         : forecast === 'uv' ? 'uv' : null,
-            yAxisID         : 'uv',
-            order           : forecast === 'uv' ? 5 : 0,
-            data            : [],
-            pointRadius     : 0,
-            pointHitRadius  : 10,
-            fill            : false,
-            backgroundColor : isDarkMode ? theme.palette.info.dark : theme.palette.info.light,
-            borderColor     : isDarkMode ? theme.palette.info.dark : theme.palette.info.light,
-        },
-    ],
-});
-
-Configurations.createChartScales = (theme, preferences, min, max) => ({
-    xAxes : [
-        {
-            gridLines : {
-                drawOnChartArea : false,
-                color           : theme.palette.text.primary,
-                zeroLineColor   : theme.palette.text.primary,
-            },
-        },
-        {
-            display : false,
-        },
-    ],
-    yAxes : [
-        {
-            id        : 'temp',
-            position  : 'left',
-            gridLines : {
-                drawOnChartArea : false,
-                color           : theme.palette.text.primary,
-                zeroLineColor   : theme.palette.text.primary,
-            },
-            ticks     : {
-                min      : min,
-                max      : max,
-                stepSize : max,
-                callback : label => `${label}${preferences.temperatureUnitSymbol}`,
-            },
-        },
-        {
-            id      : 'precip',
-            display : false,
-            ticks   : {
-                min      : 0,
-                max      : 100,
-                stepSize : 50,
-            },
-        },
-        {
-            id        : 'humidity',
-            display   : preferences.forecast === 'humidity',
-            position  : 'right',
-            gridLines : {
-                drawOnChartArea : false,
-                color           : theme.palette.text.primary,
-                zeroLineColor   : theme.palette.text.primary,
-            },
-            ticks     : {
-                min      : 0,
-                max      : 100,
-                stepSize : 50,
-                callback : label => `${label}%`,
-            },
-        },
-        {
-            id        : 'wind',
-            display   : preferences.forecast === 'wind',
-            position  : 'right',
-            gridLines : {
-                drawOnChartArea : false,
-                color           : theme.palette.text.primary,
-                zeroLineColor   : theme.palette.text.primary,
-            },
-            ticks     : {
-                min      : 0,
-                max      : preferences.units === 'si' ? 200 : 120,
-                stepSize : preferences.units === 'si' ? 50 : 30,
-                callback : label => `${label}${preferences.speedUnitSymbol}`,
-            },
-        },
-        {
-            id        : 'uv',
-            display   : preferences.forecast === 'uv',
-            position  : 'right',
-            gridLines : {
-                drawOnChartArea : false,
-                color           : theme.palette.text.primary,
-                zeroLineColor   : theme.palette.text.primary,
-            },
-            ticks     : {
-                min      : 0,
-                max      : 12,
-                stepSize : 2,
-                callback : label => `${label}`,
-            },
-        },
-    ],
-});
-
-Configurations.createChartTooltips = (preferences, t) => ({
-    displayColors : false,
-    callbacks     : {
-        label : (tooltipItem, data) => [
-            `${t('Temperature')}: ${Numbers.format(Conversions.getTemperature(data.datasets[0].data[tooltipItem.index]))}${preferences.temperatureUnitSymbol}`,
-            `${t('Precipitation')}: ${Math.round(data.datasets[1].data[tooltipItem.index])}% ${Numbers.format(data.datasets[2].data[tooltipItem.index])}mm`,
-            data.datasets[3].data[tooltipItem.index] || data.datasets[3].data[tooltipItem.index] === 0 ? `${t('Humidity')}: ${Math.round(data.datasets[3].data[tooltipItem.index])}%` : '',
-            `${t('Wind')}: ${Numbers.format(Conversions.getSpeed(data.datasets[4].data[tooltipItem.index]))}${preferences.speedUnitSymbol}`,
-            `${t('UV')}: ${data.datasets[5].data[tooltipItem.index]}`,
-        ],
-    },
 });

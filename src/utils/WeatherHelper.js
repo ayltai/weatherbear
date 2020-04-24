@@ -1,8 +1,3 @@
-import moment from 'moment';
-
-import { Preferences, } from '../models/Preferences';
-import { Conversions } from '../utils/Conversions';
-import { Configurations, } from '../Configurations';
 import { Dates, } from './Dates';
 
 export const WeatherHelper = {};
@@ -117,27 +112,4 @@ WeatherHelper.getIcon = (label, type = WeatherHelper.TYPE_DARK_SKY) => {
     if (icon) return icon;
 
     return 'wi-na';
-};
-
-WeatherHelper.updateChartData = (chartData, weather, isDarkMode) => {
-    const preferences = Preferences.load();
-
-    chartData.datasets[3].hidden = preferences.forecast !== 'humidity';
-    chartData.datasets[4].hidden = preferences.forecast !== 'wind';
-    chartData.datasets[5].hidden = preferences.forecast !== 'uv';
-
-    for (let i = 0; i < Configurations.FORECAST_HOURS; i++) {
-        chartData.labels.push(moment(weather[i].time).format(preferences.militaryTime ? 'HH' : 'ha'));
-        chartData.datasets[0].data.push(Conversions.getTemperature(weather[i].temperature));
-        chartData.datasets[1].data.push(Math.round(100 * weather[i].precipProbability));
-        chartData.datasets[2].data.push(weather[i].precipIntensity);
-        chartData.datasets[3].data.push(Math.round(100 * weather[i].humidity));
-        chartData.datasets[4].data.push(Conversions.getSpeed(weather[i].windSpeed));
-        chartData.datasets[5].data.push(weather[i].uvIndex);
-
-        const icon = new Image(32, 32);
-        icon.src = `img/${isDarkMode ? 'dark' : 'light'}/${WeatherHelper.getIcon(weather[i].icon, preferences.weatherSource)}.svg`;
-
-        chartData.datasets[0].pointStyle.push(icon);
-    }
 };
