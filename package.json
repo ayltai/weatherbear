@@ -58,7 +58,7 @@
         "@ayltai/use-online-status": "^1.0.7",
         "@ayltai/use-script": "^1.0.7",
         "@ayltai/react-weather": "^1.2.6",
-        "@material-ui/core": "^4.9.11",
+        "@material-ui/core": "^4.9.12",
         "@material-ui/icons": "^4.9.1",
         "@material-ui/lab": "^4.0.0-alpha.50",
         "chart.js": "^2.9.3",
