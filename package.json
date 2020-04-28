@@ -70,7 +70,7 @@
         "moment": "^2.24.0",
         "prop-types": "^15.7.2",
         "react": "^16.13.1",
-        "react-i18next": "^11.3.5",
+        "react-i18next": "^11.4.0",
         "react-dom": "^16.13.1",
         "react-router-dom": "^5.1.2",
         "react-scripts": "^3.4.1",
