@@ -51,7 +51,7 @@
         "react-test-renderer": "^16.13.1",
         "stylelint": "^13.3.3",
         "stylelint-config-standard": "^20.0.0",
-        "wait-on": "^4.0.2"
+        "wait-on": "^5.0.0"
     },
     "dependencies": {
         "@ayltai/use-interval": "^1.0.6",
