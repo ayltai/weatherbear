@@ -401,7 +401,7 @@ Array [
         className="MuiIconButton-label"
       >
         <svg
-          aria-hidden="true"
+          aria-hidden={true}
           className="MuiSvgIcon-root"
           focusable="false"
           viewBox="0 0 24 24"
@@ -441,7 +441,7 @@ Array [
         className="MuiIconButton-label"
       >
         <svg
-          aria-hidden="true"
+          aria-hidden={true}
           className="MuiSvgIcon-root"
           focusable="false"
           viewBox="0 0 24 24"
@@ -480,7 +480,7 @@ Array [
         className="MuiIconButton-label"
       >
         <svg
-          aria-hidden="true"
+          aria-hidden={true}
           className="MuiSvgIcon-root"
           focusable="false"
           viewBox="0 0 24 24"
