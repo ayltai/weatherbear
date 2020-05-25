@@ -378,7 +378,7 @@ Array [
     />
     <button
       aria-describedby={null}
-      className="MuiButtonBase-root MuiIconButton-root makeStyles-container-126 MuiIconButton-sizeSmall"
+      className="MuiButtonBase-root MuiIconButton-root makeStyles-container-1 MuiIconButton-sizeSmall"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -418,7 +418,7 @@ Array [
     </button>
     <button
       aria-describedby={null}
-      className="MuiButtonBase-root MuiIconButton-root makeStyles-container-159 MuiIconButton-sizeSmall"
+      className="MuiButtonBase-root MuiIconButton-root makeStyles-container-2 MuiIconButton-sizeSmall"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -457,7 +457,7 @@ Array [
     </button>
     <button
       aria-describedby={null}
-      className="MuiButtonBase-root MuiIconButton-root makeStyles-container-160 MuiIconButton-sizeSmall"
+      className="MuiButtonBase-root MuiIconButton-root makeStyles-container-3 MuiIconButton-sizeSmall"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}

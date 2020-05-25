@@ -16,6 +16,3 @@ build/
 dist/
 .scannerwork/
 *.log
-
-# Secrets
-.env

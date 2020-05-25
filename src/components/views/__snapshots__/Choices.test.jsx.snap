@@ -43,7 +43,7 @@ exports[`<Choices /> renders correctly 1`] = `
     >
       <button
         aria-describedby={null}
-        className="MuiButtonBase-root MuiIconButton-root makeStyles-container-56"
+        className="MuiButtonBase-root MuiIconButton-root makeStyles-container-1"
         disabled={false}
         edg="end"
         onBlur={[Function]}
@@ -125,7 +125,7 @@ exports[`<Choices /> renders correctly 1`] = `
     >
       <button
         aria-describedby={null}
-        className="MuiButtonBase-root MuiIconButton-root makeStyles-container-88"
+        className="MuiButtonBase-root MuiIconButton-root makeStyles-container-2"
         disabled={false}
         edg="end"
         onBlur={[Function]}
