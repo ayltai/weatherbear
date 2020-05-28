@@ -67,7 +67,7 @@
         "i18next": "^19.4.5",
         "electron-is-dev": "^1.2.0",
         "lodash.throttle": "^4.1.1",
-        "menubar": "^9.0.0",
+        "menubar": "^9.0.1",
         "moment": "^2.26.0",
         "prop-types": "^15.7.2",
         "react": "^16.13.1",
