@@ -47,7 +47,7 @@ app.whenReady().then(() => {
     if (isDev) menubar.on('ready', () => menubar.window.webContents.toggleDevTools());
 
     ipcMain.on('refresh', (event, data) => {
-        const icon = path.join(app.getPath('temp'), screen.getPrimaryDisplay().scaleFactor > 1 ? 'icon@2x.png' : 'icon.png');
+        const icon = path.join(app.getPath('temp'), Math.max(...screen.getAllDisplays().map(display => display.scaleFactor)) > 1 ? 'icon@2x.png' : 'icon.png');
 
         require('fs').writeFile(icon, nativeImage.createFromDataURL(data.icon).toPNG(), 'binary', error => {
             if (error) {
