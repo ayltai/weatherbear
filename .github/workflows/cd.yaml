@@ -27,8 +27,8 @@ jobs:
       - name: Save Linux package
         uses: actions/upload-artifact@v2
         with:
-          name: package
-          path: /dist/WeatherBear-1.1.0.AppImage
+          name: package-linux
+          path: dist/WeatherBear-1.1.0.AppImage
   package-macos:
     runs-on: macos-latest
     steps:
@@ -53,8 +53,8 @@ jobs:
       - name: Save macOS package
         uses: actions/upload-artifact@v2
         with:
-          name: package
-          path: /dist/WeatherBear-1.1.0.dmg
+          name: package-macos
+          path: dist/WeatherBear-1.1.0.dmg
   package-windows:
     runs-on: windows-latest
     steps:
@@ -79,5 +79,5 @@ jobs:
       - name: Save Windows package
         uses: actions/upload-artifact@v2
         with:
-          name: package
-          path: /dist/WeatherBear-1.1.0.exe
+          name: package-windows
+          path: dist\WeatherBear Setup 1.1.0.exe

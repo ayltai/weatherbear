@@ -63,7 +63,7 @@ A gorgeous weather app for your Mac, Linux, and Windows. Made with ❤
 1. Install [NodeJS](https://nodejs.org)
 2. Install dependencies
    ```sh
-   npm i -D
+   npm i
    ```
 
 ### Configuration
@@ -158,5 +158,3 @@ This software is made with the support of open source projects:
 
 ... and closed source services:
 * [Google Maps JavaScript API](https://developers.google.com/maps/documentation)
-* [CircleCI](https://circleci.com)
-* [SonarCloud](https://sonarcloud.io)
