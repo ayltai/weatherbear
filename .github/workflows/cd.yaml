@@ -16,6 +16,12 @@ jobs:
         run: npm i
       - name: Build for production
         run: npm run build
+        env:
+          REACT_APP_ACCU_WEATHER_API_KEY: ${{ secrets.REACT_APP_ACCU_WEATHER_API_KEY }}
+          REACT_APP_DARK_SKY_API_KEY: ${{ secrets.REACT_APP_DARK_SKY_API_KEY }}
+          REACT_APP_GOOGLE_MAP_API_KEY: ${{ secrets.REACT_APP_GOOGLE_MAP_API_KEY }}
+          REACT_APP_UNSPLASH_API_ENDPOINT: ${{ secrets.REACT_APP_UNSPLASH_API_ENDPOINT }}
+          REACT_APP_WEATHER_BIT_API_KEY: ${{ secrets.REACT_APP_WEATHER_BIT_API_KEY }}
       - name: Generate Linux package
         run: npm run package:nix
       - name: Save Linux package
@@ -36,6 +42,12 @@ jobs:
         run: npm i
       - name: Build for production
         run: npm run build
+        env:
+          REACT_APP_ACCU_WEATHER_API_KEY: ${{ secrets.REACT_APP_ACCU_WEATHER_API_KEY }}
+          REACT_APP_DARK_SKY_API_KEY: ${{ secrets.REACT_APP_DARK_SKY_API_KEY }}
+          REACT_APP_GOOGLE_MAP_API_KEY: ${{ secrets.REACT_APP_GOOGLE_MAP_API_KEY }}
+          REACT_APP_UNSPLASH_API_ENDPOINT: ${{ secrets.REACT_APP_UNSPLASH_API_ENDPOINT }}
+          REACT_APP_WEATHER_BIT_API_KEY: ${{ secrets.REACT_APP_WEATHER_BIT_API_KEY }}
       - name: Generate macOS package
         run: npm run package:mac
       - name: Save macOS package
@@ -56,6 +68,12 @@ jobs:
         run: npm i
       - name: Build for production
         run: npm run build
+        env:
+          REACT_APP_ACCU_WEATHER_API_KEY: ${{ secrets.REACT_APP_ACCU_WEATHER_API_KEY }}
+          REACT_APP_DARK_SKY_API_KEY: ${{ secrets.REACT_APP_DARK_SKY_API_KEY }}
+          REACT_APP_GOOGLE_MAP_API_KEY: ${{ secrets.REACT_APP_GOOGLE_MAP_API_KEY }}
+          REACT_APP_UNSPLASH_API_ENDPOINT: ${{ secrets.REACT_APP_UNSPLASH_API_ENDPOINT }}
+          REACT_APP_WEATHER_BIT_API_KEY: ${{ secrets.REACT_APP_WEATHER_BIT_API_KEY }}
       - name: Generate Windows package
         run: npm run package:win
       - name: Save Windows package

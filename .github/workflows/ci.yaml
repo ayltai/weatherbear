@@ -27,6 +27,12 @@ jobs:
         run: npm i
       - name: Run tests
         run: npm test
+        env:
+          REACT_APP_ACCU_WEATHER_API_KEY: ${{ secrets.REACT_APP_ACCU_WEATHER_API_KEY }}
+          REACT_APP_DARK_SKY_API_KEY: ${{ secrets.REACT_APP_DARK_SKY_API_KEY }}
+          REACT_APP_GOOGLE_MAP_API_KEY: ${{ secrets.REACT_APP_GOOGLE_MAP_API_KEY }}
+          REACT_APP_UNSPLASH_API_ENDPOINT: ${{ secrets.REACT_APP_UNSPLASH_API_ENDPOINT }}
+          REACT_APP_WEATHER_BIT_API_KEY: ${{ secrets.REACT_APP_WEATHER_BIT_API_KEY }}
       - name: Save coverage report
         uses: actions/upload-artifact@v2
         with:
