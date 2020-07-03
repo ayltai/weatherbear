@@ -1,12 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<WeatherCurrently /> renders correctly 1`] = `
-<div
-  className="makeStyles-background-1"
->
+<div>
+  <canvas
+    className="makeStyles-canvas-1"
+    height={100}
+    id="canvas"
+    width={200}
+  />
   <p
     aria-describedby={null}
-    className="MuiTypography-root makeStyles-textShadowed-4 MuiTypography-body2 MuiTypography-noWrap MuiTypography-alignCenter"
+    className="MuiTypography-root makeStyles-textShadowed-3 MuiTypography-body2 MuiTypography-noWrap MuiTypography-alignCenter"
     onBlur={[Function]}
     onFocus={[Function]}
     onMouseLeave={[Function]}
@@ -19,7 +23,7 @@ exports[`<WeatherCurrently /> renders correctly 1`] = `
   </p>
   <p
     aria-describedby={null}
-    className="MuiTypography-root makeStyles-textShadowed-6 MuiTypography-body2 MuiTypography-noWrap MuiTypography-alignCenter"
+    className="MuiTypography-root makeStyles-textShadowed-5 MuiTypography-body2 MuiTypography-noWrap MuiTypography-alignCenter"
     onBlur={[Function]}
     onFocus={[Function]}
     onMouseLeave={[Function]}
@@ -38,7 +42,7 @@ exports[`<WeatherCurrently /> renders correctly 1`] = `
     >
       <p
         aria-describedby={null}
-        className="MuiTypography-root makeStyles-textShadowed-8 MuiTypography-h4 MuiTypography-noWrap MuiTypography-alignCenter"
+        className="MuiTypography-root makeStyles-textShadowed-7 MuiTypography-h4 MuiTypography-noWrap MuiTypography-alignCenter"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseLeave={[Function]}
@@ -51,7 +55,7 @@ exports[`<WeatherCurrently /> renders correctly 1`] = `
       </p>
       <p
         aria-describedby={null}
-        className="MuiTypography-root makeStyles-textShadowed-10 MuiTypography-body2 MuiTypography-noWrap MuiTypography-alignCenter"
+        className="MuiTypography-root makeStyles-textShadowed-9 MuiTypography-body2 MuiTypography-noWrap MuiTypography-alignCenter"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseLeave={[Function]}
@@ -60,7 +64,7 @@ exports[`<WeatherCurrently /> renders correctly 1`] = `
         onTouchStart={[Function]}
         title="Humidity: 77%"
       >
-        77%
+        💧 77%
       </p>
     </div>
     <div
@@ -68,7 +72,7 @@ exports[`<WeatherCurrently /> renders correctly 1`] = `
     >
       <p
         aria-describedby={null}
-        className="MuiTypography-root makeStyles-textShadowed-12 MuiTypography-h2 MuiTypography-alignCenter"
+        className="MuiTypography-root makeStyles-textShadowed-11 MuiTypography-h2 MuiTypography-alignCenter"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseLeave={[Function]}
@@ -87,7 +91,7 @@ exports[`<WeatherCurrently /> renders correctly 1`] = `
     >
       <p
         aria-describedby={null}
-        className="MuiTypography-root makeStyles-textShadowed-14 MuiTypography-body2 MuiTypography-noWrap MuiTypography-alignCenter"
+        className="MuiTypography-root makeStyles-textShadowed-13 MuiTypography-body2 MuiTypography-noWrap MuiTypography-alignCenter"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseLeave={[Function]}
@@ -96,11 +100,11 @@ exports[`<WeatherCurrently /> renders correctly 1`] = `
         onTouchStart={[Function]}
         title="29.7°C"
       >
-        🔥 30°C
+        🥵 30°C
       </p>
       <p
         aria-describedby={null}
-        className="MuiTypography-root makeStyles-textShadowed-16 MuiTypography-body2 MuiTypography-noWrap MuiTypography-alignCenter"
+        className="MuiTypography-root makeStyles-textShadowed-15 MuiTypography-body2 MuiTypography-noWrap MuiTypography-alignCenter"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseLeave={[Function]}
@@ -109,13 +113,13 @@ exports[`<WeatherCurrently /> renders correctly 1`] = `
         onTouchStart={[Function]}
         title="22.4°C"
       >
-        ❄ 22°C
+        🥶 22°C
       </p>
     </div>
   </div>
   <p
     aria-describedby={null}
-    className="MuiTypography-root makeStyles-textShadowed-18 MuiTypography-caption MuiTypography-noWrap MuiTypography-alignCenter"
+    className="MuiTypography-root makeStyles-textShadowed-17 MuiTypography-caption MuiTypography-noWrap MuiTypography-alignCenter"
     onBlur={[Function]}
     onFocus={[Function]}
     onMouseLeave={[Function]}

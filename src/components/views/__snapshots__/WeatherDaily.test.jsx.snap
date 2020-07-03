@@ -39,7 +39,7 @@ exports[`<WeatherDaily /> renders correctly 1`] = `
       onTouchStart={[Function]}
       title=""
     >
-      🌧48%
+      🌧 48%
     </p>
   </div>
   <div
@@ -92,7 +92,7 @@ exports[`<WeatherDaily /> renders correctly 1`] = `
       onTouchStart={[Function]}
       title=""
     >
-      🔥 30°C
+      🥵 30°C
     </p>
     <p
       aria-describedby={null}
@@ -105,7 +105,7 @@ exports[`<WeatherDaily /> renders correctly 1`] = `
       onTouchStart={[Function]}
       title=""
     >
-      ❄ 22°C
+      🥶 22°C
     </p>
   </div>
 </div>
@@ -162,7 +162,7 @@ exports[`<WeatherDaily /> renders correctly 2`] = `
     onTouchStart={[Function]}
     title=""
   >
-    🔥 30°C
+    🥵 30°C
   </p>
   <p
     aria-describedby={null}
@@ -175,7 +175,7 @@ exports[`<WeatherDaily /> renders correctly 2`] = `
     onTouchStart={[Function]}
     title=""
   >
-    ❄ 22°C
+    🥶 22°C
   </p>
   <p
     aria-describedby={null}
@@ -188,7 +188,7 @@ exports[`<WeatherDaily /> renders correctly 2`] = `
     onTouchStart={[Function]}
     title=""
   >
-    🌧48%
+    🌧 48%
   </p>
 </div>
 `;
