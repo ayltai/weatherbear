@@ -1,8 +1,8 @@
 import request from 'request';
 
-export const ApiClientHelper = {};
+export const RequestHelper = {};
 
-ApiClientHelper.request = (url, argumentsValidator, invalidArgsErrorMessage, onSuccess) => {
+RequestHelper.request = (url, argumentsValidator, invalidArgsErrorMessage, onSuccess) => {
     return new Promise((resolve, reject) => {
         if (argumentsValidator()) {
             request({

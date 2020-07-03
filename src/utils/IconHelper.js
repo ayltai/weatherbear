@@ -1,13 +1,10 @@
-import { Dates, } from './Dates';
+import { Constants, } from '../Constants';
+import { DateHelper, } from './DateHelper';
 
-export const WeatherHelper = {};
+export const IconHelper = {};
 
-WeatherHelper.TYPE_DARK_SKY     = 0;
-WeatherHelper.TYPE_ACCU_WEATHER = 1;
-WeatherHelper.TYPE_WEATHER_BIT  = 2;
-
-WeatherHelper.getIcon = (label, type = WeatherHelper.TYPE_DARK_SKY) => {
-    const isDay = Dates.isDay();
+IconHelper.toIcon = (label, type = Constants.TYPE_DARK_SKY) => {
+    const isDay = DateHelper.isDay();
 
     const icons = [
         {

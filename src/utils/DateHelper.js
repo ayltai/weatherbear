@@ -1,11 +1,11 @@
-export const Dates = {};
+export const DateHelper = {};
 
-Dates.isDay = () => {
+DateHelper.isDay = () => {
     const hourOfDay = new Date().getHours();
     return hourOfDay >= 6 && hourOfDay < 18;
 };
 
-Dates.getPartOfDay = () => {
+DateHelper.getPartOfDay = () => {
     const hourOfDay = new Date().getHours();
     if (hourOfDay >= 5 && hourOfDay < 7) return 'dawn';
     if (hourOfDay >= 7 && hourOfDay < 12) return 'morning';

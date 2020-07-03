@@ -1,5 +1,5 @@
 import { Location, } from './models/Location';
-import { WeatherHelper, } from './utils/WeatherHelper';
+import { Constants } from './Constants';
 
 export const Configurations = {};
 
@@ -25,15 +25,15 @@ Configurations.ISSUES_URL        = 'https://github.com/ayltai/weatherbear/issues
 Configurations.WEATHER_SOURCES = [
     {
         label : 'Dark Sky',
-        value : WeatherHelper.TYPE_DARK_SKY,
+        value : Constants.TYPE_DARK_SKY,
     },
     {
         label : 'AccuWeather',
-        value : WeatherHelper.TYPE_ACCU_WEATHER,
+        value : Constants.TYPE_ACCU_WEATHER,
     },
     {
         label : 'Weatherbit',
-        value : WeatherHelper.TYPE_WEATHER_BIT,
+        value : Constants.TYPE_WEATHER_BIT,
     },
 ];
 
@@ -59,11 +59,11 @@ Configurations.REFRESH_INTERVALS = [
 Configurations.UNITS = [
     {
         label : 'SI (°C, km)',
-        value : 'si',
+        value : Constants.UNIT_SI,
     },
     {
         label : 'Imperial (°F, mile)',
-        value : 'imperial',
+        value : Constants.UNIT_IMPERIAL,
     },
 ];
 

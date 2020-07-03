@@ -1,5 +1,3 @@
-import { useInterval, } from '@ayltai/use-interval';
-import { getWeather, Weather, } from '@ayltai/react-weather';
 import { Divider, Grid, useTheme, } from '@material-ui/core';
 import { InfoOutlined, Refresh, Settings, } from '@material-ui/icons';
 import moment from 'moment';
@@ -10,10 +8,15 @@ import { useTranslation, } from 'react-i18next';
 import { withRouter, } from 'react-router-dom';
 
 import { UnsplashApiClient, } from '../../api/UnsplashApiClient';
+import { WeatherApiClient, } from '../../api/WeatherApiClient';
+import { WeatherCurrently, } from '../../components/views/WeatherCurrently';
+import { WeatherHourly, } from '../../components/views/WeatherHourly';
+import { WeatherDaily, } from '../../components/views/WeatherDaily';
+import { useInterval, } from '../../hooks/useInterval';
 import { Preferences, } from '../../models/Preferences';
-import { Dates, } from '../../utils/Dates';
+import { DateHelper, } from '../../utils/DateHelper';
+import { IconHelper, } from '../../utils/IconHelper';
 import { ViewHelper, } from '../../utils/ViewHelper';
-import { WeatherHelper, } from '../../utils/WeatherHelper';
 import { Button, } from '../views/Button';
 import { Timestamp, } from '../views/Timestamp';
 import { Configurations, } from '../../Configurations';
@@ -71,9 +74,9 @@ const Page = ({ history, }) => {
         const loc  = pref.favoriteLocation;
 
         if (shouldRefresh()) {
-            getWeather(loc.latitude, loc.longitude, pref.weatherSource, undefined, Configurations.FORECAST_HOURS, Configurations.FORECAST_DAYS, pref.locale)
+            WeatherApiClient.getWeather(loc.latitude, loc.longitude, pref.weatherSource, undefined, Configurations.FORECAST_HOURS, Configurations.FORECAST_DAYS, pref.locale)
                 .then(weather => {
-                    UnsplashApiClient.getRandomPhoto(`${Dates.getPartOfDay()} ${weather.currently.icon}`, window.innerWidth * 2, window.innerWidth)
+                    UnsplashApiClient.getRandomPhoto(`${DateHelper.getPartOfDay()} ${weather.currently.icon}`, window.innerWidth * 2, window.innerWidth)
                         .then(response => {
                             pref.lastRefreshTime                 = Date.now();
                             pref.weather                         = weather;
@@ -82,7 +85,7 @@ const Page = ({ history, }) => {
                             pref.backgroundImageAuthorProfileUrl = response.user.links.html;
                             pref.save();
 
-                            createTrayIcon(`${Math.round(weather.currently.temperature)}${pref.temperatureUnitSymbol}`, `${WeatherHelper.getIcon(weather.currently.icon, pref.weatherSource)}.svg`);
+                            createTrayIcon(`${Math.round(weather.currently.temperature)}${pref.temperatureUnitSymbol}`, `${IconHelper.toIcon(weather.currently.icon, pref.weatherSource)}.svg`);
 
                             setState({
                                 weather                         : weather,
@@ -95,7 +98,7 @@ const Page = ({ history, }) => {
                 })
                 .catch(console.error);
         } else {
-            createTrayIcon(`${Math.round(pref.weather.currently.temperature)}${pref.temperatureUnitSymbol}`, `${WeatherHelper.getIcon(pref.weather.currently.icon, pref.weatherSource)}.svg`);
+            createTrayIcon(`${Math.round(pref.weather.currently.temperature)}${pref.temperatureUnitSymbol}`, `${IconHelper.toIcon(pref.weather.currently.icon, pref.weatherSource)}.svg`);
 
             setState({
                 weather                         : pref.weather,
@@ -119,7 +122,7 @@ const Page = ({ history, }) => {
                     flexItem />
             )}
             <Grid item>
-                <Weather.Daily
+                <WeatherDaily
                     orientation='vertical'
                     date={moment().add(i, 'days')}
                     summary={state.weather.daily[i].summary}
@@ -141,7 +144,7 @@ const Page = ({ history, }) => {
     return (
         <>
             {state.backgroundImageUrl ? (
-                <Weather.Currently
+                <WeatherCurrently
                     width={window.innerWidth}
                     height={window.innerWidth / 2}
                     backgroundImageUrl={state.backgroundImageUrl}
@@ -159,7 +162,7 @@ const Page = ({ history, }) => {
                     unit={preferences.units} />
             ) : ViewHelper.createDummyCurrentWeather()}
             {state.weather.hourly ? (
-                <Weather.Hourly
+                <WeatherHourly
                     width={window.innerWidth - theme.spacing(1)}
                     height={window.innerWidth / 2}
                     hourly={state.weather.hourly}

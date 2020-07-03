@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<WeatherHourly /> renders correctly 1`] = `
+<canvas
+  height={160}
+  id="chart"
+  width={320}
+/>
+`;

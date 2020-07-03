@@ -5,7 +5,10 @@ import { useTranslation, } from 'react-i18next';
 
 export const ShadowedText = props => {
     const classes = makeStyles(theme => ({
-        text : {
+        text         : {
+            padding : theme.spacing(0.5),
+        },
+        textShadowed : {
             padding    : theme.spacing(0.5),
             textShadow : theme.palette.type === 'dark' ? '0 0 7px rgba(0, 0, 0, 0.6)' : '0 0 7px rgba(255, 255, 255, 0.6)',
         },
@@ -18,7 +21,7 @@ export const ShadowedText = props => {
             className={props.className}
             title={t(props.tooltip || '')}>
             <Typography
-                className={classes.text}
+                className={props.noShadow ? classes.text : classes.textShadowed}
                 component='p'
                 align={props.align}
                 color={props.color}
@@ -57,6 +60,7 @@ ShadowedText.propTypes = {
         'error',
     ]),
     noWrap    : PropTypes.bool,
+    noShadow  : PropTypes.bool,
     variant   : PropTypes.oneOf([
         'h1',
         'h2',

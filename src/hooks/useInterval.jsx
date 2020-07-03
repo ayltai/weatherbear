@@ -1,9 +1,9 @@
-import React from 'react';
+import { useEffect, } from 'react';
 
 export const useInterval = (callback, interval) => {
-    React.useEffect(() => {
-        window.setInterval(callback, interval);
+    useEffect(() => {
+        const id = window.setInterval(callback, interval);
 
-        return () => clearInterval(interval);
+        return () => clearInterval(id);
     }, [ callback, interval, ]);
 };

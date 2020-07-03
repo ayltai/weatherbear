@@ -1,15 +1,20 @@
-import React from 'react';
+import { useEffect, useState, } from 'react';
 
 const cachedScripts = [];
 
-export const useScript = src => {
-    const [ isLoaded, setIsLoaded, ] = React.useState(false);
-    const [ hasError, setHasError, ] = React.useState(false);
+export const useScript = (src, onLoad) => {
+    const [ isLoaded, setIsLoaded, ] = useState(false);
+    const [ hasError, setHasError, ] = useState(false);
 
-    const handleLoaded = () => setIsLoaded(true);
-    const handleError  = () => setHasError(true);
+    const handleLoaded = () => {
+        setIsLoaded(true);
 
-    React.useEffect(() => {
+        if (onLoad) onLoad();
+    };
+
+    const handleError = () => setHasError(true);
+
+    useEffect(() => {
         if (cachedScripts.includes(src)) {
             handleLoaded();
         } else {

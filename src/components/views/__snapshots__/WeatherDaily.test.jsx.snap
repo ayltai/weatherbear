@@ -1,0 +1,194 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<WeatherDaily /> renders correctly 1`] = `
+<div
+  aria-describedby={null}
+  className="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-evenly"
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOver={[Function]}
+  onTouchEnd={[Function]}
+  onTouchStart={[Function]}
+  title={null}
+>
+  <div
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
+  >
+    <p
+      aria-describedby={null}
+      className="MuiTypography-root makeStyles-textShadowed-2 MuiTypography-body2 MuiTypography-noWrap MuiTypography-alignCenter"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      title=""
+    >
+      Mon
+    </p>
+    <p
+      aria-describedby={null}
+      className="MuiTypography-root makeStyles-textShadowed-4 MuiTypography-caption MuiTypography-noWrap MuiTypography-alignCenter"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      title=""
+    >
+      🌧48%
+    </p>
+  </div>
+  <div
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
+  >
+    <p
+      aria-describedby={null}
+      className="MuiTypography-root makeStyles-textShadowed-6 MuiTypography-h4 MuiTypography-noWrap MuiTypography-alignCenter"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      title=""
+    >
+      <i
+        className="wi wi-night-alt-cloudy"
+      />
+    </p>
+  </div>
+  <div
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+  >
+    <p
+      aria-describedby={null}
+      className="MuiTypography-root makeStyles-textShadowed-8 MuiTypography-caption MuiTypography-noWrap MuiTypography-alignLeft"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      title=""
+    >
+      Partly Cloudy
+    </p>
+  </div>
+  <div
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
+  >
+    <p
+      aria-describedby={null}
+      className="MuiTypography-root makeStyles-textShadowed-10 MuiTypography-body2 MuiTypography-noWrap MuiTypography-alignCenter"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      title=""
+    >
+      🔥 30°C
+    </p>
+    <p
+      aria-describedby={null}
+      className="MuiTypography-root makeStyles-textShadowed-12 MuiTypography-body2 MuiTypography-noWrap MuiTypography-alignCenter"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      title=""
+    >
+      ❄ 22°C
+    </p>
+  </div>
+</div>
+`;
+
+exports[`<WeatherDaily /> renders correctly 2`] = `
+<div
+  aria-describedby={null}
+  className="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-column MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-evenly"
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOver={[Function]}
+  onTouchEnd={[Function]}
+  onTouchStart={[Function]}
+  title={null}
+>
+  <p
+    aria-describedby={null}
+    className="MuiTypography-root makeStyles-textShadowed-14 MuiTypography-body2 MuiTypography-noWrap MuiTypography-alignCenter"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    title=""
+  >
+    Mon
+  </p>
+  <p
+    aria-describedby={null}
+    className="MuiTypography-root makeStyles-textShadowed-16 MuiTypography-h4 MuiTypography-noWrap MuiTypography-alignCenter"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    title=""
+  >
+    <i
+      className="wi wi-night-alt-cloudy"
+    />
+  </p>
+  <p
+    aria-describedby={null}
+    className="MuiTypography-root makeStyles-textShadowed-18 MuiTypography-body2 MuiTypography-noWrap MuiTypography-alignCenter"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    title=""
+  >
+    🔥 30°C
+  </p>
+  <p
+    aria-describedby={null}
+    className="MuiTypography-root makeStyles-textShadowed-20 MuiTypography-body2 MuiTypography-noWrap MuiTypography-alignCenter"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    title=""
+  >
+    ❄ 22°C
+  </p>
+  <p
+    aria-describedby={null}
+    className="MuiTypography-root makeStyles-textShadowed-22 MuiTypography-caption MuiTypography-noWrap MuiTypography-alignCenter"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    title=""
+  >
+    🌧48%
+  </p>
+</div>
+`;

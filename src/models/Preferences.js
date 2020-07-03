@@ -1,4 +1,5 @@
 import { Configurations, } from '../Configurations';
+import { Constants, } from '../Constants';
 import { Location, } from './Location';
 
 const KEY = 'preferences';
@@ -25,11 +26,11 @@ export class Preferences {
     }
 
     get temperatureUnitSymbol() {
-        return this.units === 'si' ? '°C' : '°F';
+        return this.units === Constants.UNIT_SI ? '°C' : '°F';
     }
 
     get speedUnitSymbol() {
-        return this.units === 'si' ? 'km/h' : 'mi/h';
+        return this.units === Constants.UNIT_SI ? 'km/h' : 'mi/h';
     }
 
     save = () => window.localStorage.setItem(KEY, JSON.stringify(this));
