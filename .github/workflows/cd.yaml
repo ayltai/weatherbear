@@ -20,9 +20,9 @@ jobs:
         run: npm run package:nix
       - name: Save Linux package
         uses: actions/upload-artifact@v2
-          with:
-            name: package
-            path: /dist/WeatherBear-1.1.0.AppImage
+        with:
+          name: package
+          path: /dist/WeatherBear-1.1.0.AppImage
   package-macos:
     runs-on: macos-latest
     steps:
@@ -40,9 +40,9 @@ jobs:
         run: npm run package:mac
       - name: Save macOS package
         uses: actions/upload-artifact@v2
-          with:
-            name: package
-            path: /dist/WeatherBear-1.1.0.dmg
+        with:
+          name: package
+          path: /dist/WeatherBear-1.1.0.dmg
   package-windows:
     runs-on: windows-latest
     steps:
@@ -60,6 +60,6 @@ jobs:
         run: npm run package:win
       - name: Save Windows package
         uses: actions/upload-artifact@v2
-          with:
-            name: package
-            path: /dist/WeatherBear-1.1.0.exe
+        with:
+          name: package
+          path: /dist/WeatherBear-1.1.0.exe
