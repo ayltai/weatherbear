@@ -1,7 +1,7 @@
 {
     "name": "weatherbear",
     "description": "A gorgeous weather app for your Mac, Linux, and Windows",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "author": "Alan Tai",
     "repository": {
         "type": "git",

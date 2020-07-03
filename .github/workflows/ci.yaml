@@ -1,0 +1,43 @@
+name: CI
+on: [push]
+jobs:
+  check:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+      - name: Set up Node.js 14
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 14
+      - name: Install dependencies
+        run: npm i
+      - name: Run linters
+        run: npm run check
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+      - name: Set up Node.js 14
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 14
+      - name: Install dependencies
+        run: npm i
+      - name: Run tests
+        run: npm test
+      - name: Save coverage report
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: /coverage/
+      - name: Upload coverage report to Codecov
+        run: npm run codecov
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: Run SonarCloud scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

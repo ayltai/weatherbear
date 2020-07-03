@@ -1,0 +1,65 @@
+name: CD
+on:
+  release:
+    types: [created]
+jobs:
+  package-linux:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+      - name: Set up Node.js 14
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 14
+      - name: Install dependencies
+        run: npm i
+      - name: Build for production
+        run: npm run build
+      - name: Generate Linux package
+        run: npm run package:nix
+      - name: Save Linux package
+        uses: actions/upload-artifact@v2
+          with:
+            name: package
+            path: /dist/WeatherBear-1.1.0.AppImage
+  package-macos:
+    runs-on: macos-latest
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+      - name: Set up Node.js 14
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 14
+      - name: Install dependencies
+        run: npm i
+      - name: Build for production
+        run: npm run build
+      - name: Generate macOS package
+        run: npm run package:mac
+      - name: Save macOS package
+        uses: actions/upload-artifact@v2
+          with:
+            name: package
+            path: /dist/WeatherBear-1.1.0.dmg
+  package-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+      - name: Set up Node.js 14
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 14
+      - name: Install dependencies
+        run: npm i
+      - name: Build for production
+        run: npm run build
+      - name: Generate Windows package
+        run: npm run package:win
+      - name: Save Windows package
+        uses: actions/upload-artifact@v2
+          with:
+            name: package
+            path: /dist/WeatherBear-1.1.0.exe
