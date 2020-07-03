@@ -63,7 +63,7 @@ export const WeatherCurrently = props => {
                         align='center'
                         noShadow={props.noShadow}
                         noWrap>
-                        {`${humidity}%`}
+                        {`💧 ${humidity}%`}
                     </ShadowedText>
                 </Grid>
                 <Grid
@@ -83,7 +83,7 @@ export const WeatherCurrently = props => {
                     <Temperature
                         variant='body2'
                         align='center'
-                        prefix={`${props.temperatureHighLabel || '🔥'} `}
+                        prefix={`${props.temperatureHighLabel || '🥵'} `}
                         unit={props.unit}
                         noShadow={props.noShadow}
                         showTip
@@ -93,7 +93,7 @@ export const WeatherCurrently = props => {
                     <Temperature
                         variant='body2'
                         align='center'
-                        prefix={`${props.temperatureLowLabel || '❄'} `}
+                        prefix={`${props.temperatureLowLabel || '🥶'} `}
                         unit={props.unit}
                         noShadow={props.noShadow}
                         showTip

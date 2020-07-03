@@ -40,7 +40,7 @@ export const WeatherDaily = props => {
             key={i++}
             variant='body2'
             align='center'
-            prefix={`${props.temperatureHighLabel || '🔥'} `}
+            prefix={`${props.temperatureHighLabel || '🥵'} `}
             unit={props.unit}
             noShadow={props.noShadow}
             noWrap>
@@ -53,7 +53,7 @@ export const WeatherDaily = props => {
             key={i++}
             variant='body2'
             align='center'
-            prefix={`${props.temperatureLowLabel || '❄'} `}
+            prefix={`${props.temperatureLowLabel || '🥶'} `}
             unit={props.unit}
             noShadow={props.noShadow}
             noWrap>
@@ -68,7 +68,7 @@ export const WeatherDaily = props => {
             align='center'
             noShadow={props.noShadow}
             noWrap>
-            {`${props.precipLabel || '🌧'}${Math.round(props.precipProbability * 100)}%`}
+            {`${props.precipLabel || '🌧'} ${Math.round(props.precipProbability * 100)}%`}
         </ShadowedText>
     );
 
@@ -135,11 +135,11 @@ export const WeatherDaily = props => {
                 {`${props.precipLabel || '🌧'} ${NumberFormatHelper.toFixed(100 * props.precipProbability, 0)}% ${NumberFormatHelper.toFixed(props.precipIntensity)}mm`}<br />
                 {props.humidity ? (
                     <>
-                        {`${props.humidityLabel || '🌢'} ${NumberFormatHelper.toFixed(100 * props.humidity, 0)}`}<br />
+                        {`${props.humidityLabel || '💧'} ${NumberFormatHelper.toFixed(100 * props.humidity, 0)}%`}<br />
                     </>
                 ) : null}
-                {`${props.windSpeedLabel || '💨'} ${NumberFormatHelper.toFixed(MeasurementHelper.toSpeed(props.windSpeed, props.unit), 0)}${props.windSpeedSuffix}`}<br />
-                {`${props.uvIndexLabel || '☀'} ${props.uvIndex}`}
+                {`${props.windSpeedLabel || '🌬'} ${NumberFormatHelper.toFixed(MeasurementHelper.toSpeed(props.windSpeed, props.unit), 0)}${props.windSpeedSuffix}`}<br />
+                {`${props.uvIndexLabel || '🌞'} ${props.uvIndex}`}
             </Fragment>
         }>
             <Grid

@@ -27,6 +27,7 @@ export const WeatherHourly = props => {
                 fill            : false,
                 backgroundColor : isDarkMode ? theme.palette.secondary.dark : theme.palette.secondary.light,
                 borderColor     : isDarkMode ? theme.palette.secondary.dark : theme.palette.secondary.light,
+                borderWidth     : 2,
             },
             {
                 label           : '',
@@ -38,6 +39,7 @@ export const WeatherHourly = props => {
                 fill            : true,
                 backgroundColor : isDarkMode ? theme.palette.primary.dark : theme.palette.primary.light,
                 borderColor     : isDarkMode ? theme.palette.primary.dark : theme.palette.primary.light,
+                borderWidth     : 2,
             },
             {
                 label : '',
@@ -54,6 +56,7 @@ export const WeatherHourly = props => {
                 fill            : false,
                 backgroundColor : isDarkMode ? theme.palette.info.dark : theme.palette.info.light,
                 borderColor     : isDarkMode ? theme.palette.info.dark : theme.palette.info.light,
+                borderWidth     : 2,
             },
             {
                 label           : '',
@@ -65,6 +68,7 @@ export const WeatherHourly = props => {
                 fill            : false,
                 backgroundColor : isDarkMode ? theme.palette.info.dark : theme.palette.info.light,
                 borderColor     : isDarkMode ? theme.palette.info.dark : theme.palette.info.light,
+                borderWidth     : 2,
             },
             {
                 label           : '',
@@ -76,6 +80,7 @@ export const WeatherHourly = props => {
                 fill            : false,
                 backgroundColor : isDarkMode ? theme.palette.info.dark : theme.palette.info.light,
                 borderColor     : isDarkMode ? theme.palette.info.dark : theme.palette.info.light,
+                borderWidth     : 2,
             },
         ],
     });
@@ -201,9 +206,9 @@ export const WeatherHourly = props => {
             label : (tooltipItem, data) => [
                 `${props.temperatureLabel || '🌡'} ${MeasurementHelper.toTemperature(data.datasets[0].data[tooltipItem.index], unit)}`,
                 `${props.precipitationLabel || '🌧'} ${NumberFormatHelper.toFixed(data.datasets[1].data[tooltipItem.index])}% ${NumberFormatHelper.toFixed(data.datasets[2].data[tooltipItem.index])}mm`,
-                data.datasets[3].data[tooltipItem.index] || data.datasets[3].data[tooltipItem.index] === 0 ? `${props.humidityLabel || '🌢'} ${NumberFormatHelper.toFixed(data.datasets[3].data[tooltipItem.index], 0)}%` : '',
-                `${props.windSpeedLabel || '💨'} ${NumberFormatHelper.toFixed(data.datasets[4].data[tooltipItem.index], 0)}${props.windSpeedSuffix || ''}`,
-                `${props.uvIndexLabel || '☀'} ${NumberFormatHelper.toFixed(data.datasets[5].data[tooltipItem.index], 0)}`,
+                data.datasets[3].data[tooltipItem.index] || data.datasets[3].data[tooltipItem.index] === 0 ? `${props.humidityLabel || '💧'} ${NumberFormatHelper.toFixed(data.datasets[3].data[tooltipItem.index], 0)}%` : '',
+                `${props.windSpeedLabel || '🌬'} ${NumberFormatHelper.toFixed(data.datasets[4].data[tooltipItem.index], 0)}${props.windSpeedSuffix || ''}`,
+                `${props.uvIndexLabel || '🌞'} ${NumberFormatHelper.toFixed(data.datasets[5].data[tooltipItem.index], 0)}`,
             ],
         },
     });
