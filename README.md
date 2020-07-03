@@ -27,17 +27,17 @@ A gorgeous weather app for your Mac, Linux, and Windows. Made with ❤
 
 ## Screenshots
 
-#### macOS Catalina
+#### macOS
 
-![macOS Catalina](design/screenshot-mac.png)
+![macOS](design/screenshot-mac.png)
 
-#### Ubuntu 18.04
+#### Ubuntu
 
-![Ubuntu 18.04](design/screenshot-linux.png)
+![Ubuntu](design/screenshot-linux.png)
 
-#### Windows 10
+#### Windows
 
-![Windows 10](design/screenshot-win.png)
+![Windows](design/screenshot-win.png)
 
 #### Light theme
 
@@ -49,13 +49,13 @@ A gorgeous weather app for your Mac, Linux, and Windows. Made with ❤
 
 ![More settings](design/screenshot-settings-2.png)
 
-## Downloads
+## Installation packages
 
-| OS      | Download URL                                                                                       |
-|---------|----------------------------------------------------------------------------------------------------|
-| macOS   | https://github.com/ayltai/weatherbear/releases/download/release%2F1.0.0/WeatherBear-1.0.0.dmg      |
-| Linux   | https://github.com/ayltai/weatherbear/releases/download/release%2F1.0.0/WeatherBear-1.0.0.AppImage |
-| Windows | https://github.com/ayltai/weatherbear/releases/download/release%2F1.0.0/WeatherBear-1.0.0.exe      |
+| OS      | Download URL                                                              |
+|---------|---------------------------------------------------------------------------|
+| macOS   | https://github.com/ayltai/weatherbear/suites/872277729/artifacts/10155420 |
+| Linux   | https://github.com/ayltai/weatherbear/suites/872277729/artifacts/10155419 |
+| Windows | https://github.com/ayltai/weatherbear/suites/872277729/artifacts/10155421 |
 
 ## Development
 
