@@ -2,6 +2,7 @@ import { Grid, makeStyles, } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { Preferences, } from '../../models/Preferences';
 import { IconHelper, } from '../../utils/IconHelper';
 import { NumberFormatHelper, } from '../../utils/NumberFormatHelper';
 import { Constants, } from '../../Constants';
@@ -9,22 +10,36 @@ import { ShadowedText, } from './ShadowedText';
 import { Temperature, } from './Temperature';
 
 export const WeatherCurrently = props => {
-    const classes = makeStyles(theme => ({
-        background : {
-            backgroundImage : `url(${props.backgroundImageUrl})`,
-            backgroundSize  : 'cover',
-            padding         : theme.spacing(0.5),
-            height          : props.height + theme.spacing(1),
-        },
-        padding    : {
-            paddingTop : theme.spacing(1),
+    const classes = makeStyles(() => ({
+        canvas : {
+            position : 'absolute',
+            zIndex   : -1,
+            left     : 0,
+            top      : 0,
         },
     }))();
 
     const humidity = NumberFormatHelper.toFixed(props.humidity * 100, 0);
 
+    const image = React.useMemo(() => new window.Image(), []);
+
+    image.src    = props.backgroundImageUrl;
+    image.onload = () => {
+        const context     = document.getElementById('canvas').getContext('2d');
+        const ratio       = Math.max(props.width / image.width, props.height / image.height);
+        const preferences = Preferences.load();
+
+        context.filter = `${preferences.backgroundBlurred ? 'blur(2px)' : ''} ${preferences.backgroundDarken ? 'brightness(80%)' : ''}`;
+        context.drawImage(image, 0, 0, image.width, image.height, (props.width - image.width * ratio) / 2, (props.height - image.height * ratio) / 2, image.width * ratio, image.height * ratio);
+    };
+
     return (
-        <div className={classes.background}>
+        <div>
+            <canvas
+                className={classes.canvas}
+                id='canvas'
+                width={props.width}
+                height={props.height} />
             <ShadowedText
                 variant='body2'
                 tooltip={props.location}

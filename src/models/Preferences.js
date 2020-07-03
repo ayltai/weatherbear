@@ -17,6 +17,8 @@ export class Preferences {
     isMilitaryTime        = Configurations.IS_MILITARY_TIME;
     weatherSource         = Configurations.WEATHER_SOURCES[0].value;
     weather;
+    backgroundBlurred;
+    backgroundDarken      = true;
     backgroundImageUrl;
     backgroundImageAuthor;
     backgroundImageAuthorProfileUrl;

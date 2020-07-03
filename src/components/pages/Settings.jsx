@@ -31,14 +31,16 @@ const Component = ({ history, }) => {
     const [ updateUrl,           setUpdateUrl,           ] = React.useState('');
 
     const [ state, setState, ] = React.useState({
-        weatherSource   : preferences.weatherSource,
-        refreshInterval : preferences.refreshInterval,
-        autoLaunch      : preferences.isAutoLaunch,
-        units           : preferences.units,
-        forecast        : preferences.forecast,
-        locale          : preferences.locale,
-        isDarkMode      : preferences.isDarkMode,
-        militaryTime    : preferences.isMilitaryTime,
+        weatherSource     : preferences.weatherSource,
+        refreshInterval   : preferences.refreshInterval,
+        autoLaunch        : preferences.isAutoLaunch,
+        units             : preferences.units,
+        forecast          : preferences.forecast,
+        backgroundBlurred : preferences.backgroundBlurred,
+        backgroundDarken  : preferences.backgroundDarken,
+        locale            : preferences.locale,
+        isDarkMode        : preferences.isDarkMode,
+        militaryTime      : preferences.isMilitaryTime,
     });
 
     return (
@@ -146,6 +148,30 @@ const Component = ({ history, }) => {
                         setState({
                             ...state,
                             forecast : value,
+                        });
+                    }} />
+                <BooleanPreference
+                    title='Blur background'
+                    checked={state.backgroundBlurred}
+                    onChange={checked => {
+                        preferences.backgroundBlurred = checked;
+                        preferences.save();
+
+                        setState({
+                            ...state,
+                            backgroundBlurred : checked,
+                        });
+                    }} />
+                <BooleanPreference
+                    title='Dim background'
+                    checked={state.backgroundDarken}
+                    onChange={checked => {
+                        preferences.backgroundDarken = checked;
+                        preferences.save();
+
+                        setState({
+                            ...state,
+                            backgroundDarken : checked,
                         });
                     }} />
                 <ChoicePreference
