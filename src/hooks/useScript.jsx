@@ -6,15 +6,15 @@ export const useScript = (src, onLoad) => {
     const [ isLoaded, setIsLoaded, ] = useState(false);
     const [ hasError, setHasError, ] = useState(false);
 
-    const handleLoaded = () => {
-        setIsLoaded(true);
-
-        if (onLoad) onLoad();
-    };
-
-    const handleError = () => setHasError(true);
-
     useEffect(() => {
+        const handleLoaded = () => {
+            setIsLoaded(true);
+
+            if (onLoad) onLoad();
+        };
+
+        const handleError = () => setHasError(true);
+
         if (cachedScripts.includes(src)) {
             handleLoaded();
         } else {
@@ -33,7 +33,7 @@ export const useScript = (src, onLoad) => {
                 script.removeEventListener('error', handleError);
             };
         }
-    }, [ src, ]);
+    }, [ src, onLoad, ]);
 
     return [ isLoaded, hasError, ];
 };
