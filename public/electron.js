@@ -6,12 +6,14 @@ const isDev = require('electron-is-dev');
 const path  = require('path');
 
 const WINDOW_WIDTH  = 320;
-const WINDOW_HEIGHT = isDev ? 822 : 522;
+const WINDOW_HEIGHT = isDev ? 830 : 530;
 
 global.IS_DARK_MODE = nativeTheme.shouldUseDarkColors;
 global.APP_DIR      = app.getAppPath();
 
 if (isDev) process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = 'true';
+
+app.commandLine.appendSwitch('disable-web-security');
 
 app.whenReady().then(() => {
     if (isDev) {
@@ -35,6 +37,7 @@ app.whenReady().then(() => {
             resizable      : false,
             webPreferences : {
                 allowRunningInsecureContent : true,
+                enableRemoteModule          : true,
                 nodeIntegration             : true,
                 webSecurity                 : false,
             }
