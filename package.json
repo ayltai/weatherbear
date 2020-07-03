@@ -30,7 +30,7 @@
         "package:mac": "electron-builder build --mac --publish never",
         "package:nix": "electron-builder build --linux --publish never",
         "package:win": "electron-builder build --win --publish never",
-        "test": "react-scripts test --watchAll --forceExit --ci --no-watchman --coverage --coverageDirectory=coverage",
+        "test": "react-scripts test --watchAll=false --ci --no-watchman --coverage --coverageDirectory=coverage",
         "eject": "react-scripts eject"
     },
     "devDependencies": {
