@@ -82,7 +82,7 @@ A gorgeous weather app for your Mac, Linux, and Windows. Made with ❤
    export REACT_APP_ACCU_WEATHER_API_KEY=XXXXX
    ```
 
-### Weatherbit API
+#### Weatherbit API
 1. Get an API key from [Weatherbit](https://www.weatherbit.io/api)
 2. Specify the API key for using Weatherbit:
    ```sh
