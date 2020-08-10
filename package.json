@@ -52,7 +52,7 @@
         "react-test-renderer": "^16.13.1",
         "stylelint": "^13.6.1",
         "stylelint-config-standard": "^20.0.0",
-        "wait-on": "^5.1.0"
+        "wait-on": "^5.2.0"
     },
     "dependencies": {
         "@material-ui/core": "^4.11.0",
