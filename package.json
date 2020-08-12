@@ -47,7 +47,7 @@
         "enzyme-adapter-react-16": "^1.15.3",
         "eslint": "^7.6.0",
         "eslint-plugin-react": "^7.20.5",
-        "nock": "^13.0.3",
+        "nock": "^13.0.4",
         "react-scripts": "^3.4.1",
         "react-test-renderer": "^16.13.1",
         "stylelint": "^13.6.1",
