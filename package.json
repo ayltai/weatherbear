@@ -48,7 +48,7 @@
         "eslint": "^7.6.0",
         "eslint-plugin-react": "^7.20.5",
         "nock": "^13.0.4",
-        "react-scripts": "^3.4.1",
+        "react-scripts": "^3.4.2",
         "react-test-renderer": "^16.13.1",
         "stylelint": "^13.6.1",
         "stylelint-config-standard": "^20.0.0",
