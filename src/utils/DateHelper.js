@@ -11,6 +11,6 @@ DateHelper.getPartOfDay = () => {
     if (hourOfDay >= 7 && hourOfDay < 12) return 'morning';
     if (hourOfDay >= 12 && hourOfDay < 17) return 'afternoon';
     if (hourOfDay >= 17 && hourOfDay < 19) return 'dusk';
-    if (hourOfDay >= 19 && hourOfDay < 11) return 'evening';
+    if (hourOfDay >= 19 && hourOfDay < 23) return 'evening';
     return 'night';
 };
