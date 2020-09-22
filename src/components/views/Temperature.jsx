@@ -25,5 +25,5 @@ Temperature.propTypes = {
         Constants.UNIT_IMPERIAL,
     ]),
     showTip : PropTypes.bool,
-    ...Text.propTypes,
+    ...ShadowedText.propTypes,
 };
