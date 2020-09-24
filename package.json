@@ -67,7 +67,7 @@
         "moment": "^2.29.0",
         "prop-types": "^15.7.2",
         "react": "^16.13.1",
-        "react-i18next": "^11.7.2",
+        "react-i18next": "^11.7.3",
         "react-dom": "^16.13.1",
         "react-router-dom": "^5.2.0",
         "request": "^2.88.2",
